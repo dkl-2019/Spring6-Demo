@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- 1 set注入方法-->
+    <bean id="book" class="com.kunling.spring6.iocxml.di.Book">
+        <property name="bname" value="前端开发"></property>
+        <property name="author" value="kunkun"></property>
+<!--        <property name="others" value="null"></property>-->
+<!--        <property name="others" value="&lt;&gt;"></property>-->
+        <property name="others">
+            <!-- 解决方案二：使用CDATA节 -->
+            <!-- CDATA中的C代表Character，是文本、字符的含义，CDATA就表示纯文本数据 -->
+            <!-- XML解析器看到CDATA节就知道这里是纯文本，就不会当作XML标签或属性来解析 -->
+            <!-- 所以CDATA节中写什么符号都随意 -->
+            <value><![CDATA[a < b]]></value>
+        </property>
+    </bean>
+
+    <!-- 2 构造器注入-->
+    <bean id="bookCon" class="com.kunling.spring6.iocxml.di.Book">
+        <constructor-arg name="bname" value="java开发"></constructor-arg>
+        <constructor-arg name="author" value="kunkun"></constructor-arg>
+    </bean>
+</beans>
