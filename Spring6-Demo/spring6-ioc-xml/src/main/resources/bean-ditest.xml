@@ -34,6 +34,18 @@
         </property>
     </bean>
 
+    <!--第三种方式 级联赋值-->
+    <bean id="dept3" class="com.kunling.spring6.iocxml.ditest.Dept">
+        <property name="dname" value="研发部"></property>
+    </bean>
+
+    <bean id="emp3" class="com.kunling.spring6.iocxml.ditest.Emp">
+        <property name="ename" value="tom"></property>
+        <property name="age" value="30"></property>
+        <property name="dept" ref="dept3"></property>
+        <property name="dept.dname" value="测试部"></property>
+    </bean>
+
 </beans>
 
 
