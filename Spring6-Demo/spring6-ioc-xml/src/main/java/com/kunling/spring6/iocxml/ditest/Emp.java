@@ -36,5 +36,6 @@ public class Emp {
 
     public void work() {
         System.out.println(ename + "emp work..." + age);
+        dept.info();
     }
 }
