@@ -1,0 +1,9 @@
+com\kunling\spring6\iocxml\bean\UserDaolmpl.class
+com\kunling\spring6\iocxml\bean\UserDao.class
+com\kunling\spring6\iocxml\ditest\Dept.class
+com\kunling\spring6\iocxml\di\Book.class
+com\kunling\spring6\iocxml\bean\TestUserDao.class
+com\kunling\spring6\iocxml\bean\PersonDaoImpl.class
+com\kunling\spring6\iocxml\di\TestBook.class
+com\kunling\spring6\iocxml\ditest\Emp.class
+com\kunling\spring6\iocxml\ditest\TestEmp.class
