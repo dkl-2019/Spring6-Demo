@@ -1,9 +1,12 @@
-## 基于XML管理bean
+# IOC
+
+## 1. 基于XML管理bean
 
 归结起来都是bean.xml文件中如何管理对象，赋值等等，然后在代码中获取bean文件进行后续操作
 
 ---
 **<font color=orange>获取bean对象的方式</font>**
+
 1. 根据id获取
 2. 根据类型获取（要求IOC容器中指定类型的bean有且只能有一个）
 3. 根据id和类型获取
@@ -21,8 +24,67 @@
 6. 集合类型属性赋值：List、Map、引用集合类型
 7. 命名空间注入
 8. 引入外部文件：配置好依赖，将外部文件准备好，然后在xml配置文件中完成注入
+9. bean的作用域：singleton（默认，bean的对象始终为单例），prototype（bean可以有多个实例）
+10. bean的生命周期
+11. FactoryBean：一种整合第三方框架的常用机制
+12. 基于xml的自动装配
 
 ---
+
+
+
+## 2. 基于注解管理bean
+
+<font color=orange>**使用注解定义bean**</font>
+
+* @Component
+
+* @Repository
+
+* @Service
+
+* @Controller
+
+---
+
+<font color=orange>**@Autowired注入**</font>
+
+* 属性注入
+* set注入
+* 构造方法上注入
+* 形参上注入
+* 只有一个构造函数，可以不加注解，自动注入
+* @Autowired 和 @Qualifier 联合注解，根据名称注入
+
+---
+
+<font color=orange>**@Resource注入**</font>
+
+1. 根据name进行注入，在注解中直接写清楚要注入的对象
+2. 根据类型进行注入
+3. 默认byName注入，没有指定name时把属性名当做name，根据name找不到时，才会byType注入。byType注入时，某种类型的Bean只能有一个
+
+---
+
+<font color=orange>**全注解开发**</font>
+
+在基于注解管理bean的基础上，将配置文件写成配置类的形式，完全使用注解进行开发
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
