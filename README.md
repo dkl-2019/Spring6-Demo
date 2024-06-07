@@ -72,7 +72,29 @@
 
 
 
+---
 
+## 3. 手写IOC
+
+<font color=blue>**Java反射机制**</font>
+
+Java的反射机制指的是程序在运行时能够获取自身的信息。
+
+* 1、通过反射获取class对象的方式
+* 2、通过反射获取构造方法
+  * 获取所有构造
+  * 获取public构造
+  * 获取private构造
+* 3、通过反射获取类中的属性
+  * public属性
+  * private属性
+* 4、通过反射获取方法
+  * public方法
+  * private方法
+
+
+
+<font color=blue>**实现Spring的IOC**</font>
 
 
 

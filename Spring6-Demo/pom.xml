@@ -12,6 +12,8 @@
         <module>spring6-ioc-xml</module>
         <module>spring-first</module>
         <module>spring6-ioc-annotation</module>
+        <module>spring6-reflect</module>
+        <module>spring6-ioc-implement</module>
     </modules>
 
     <properties>
