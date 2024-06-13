@@ -104,6 +104,16 @@ Java的反射机制指的是程序在运行时能够获取自身的信息。
 
 # AOP
 
+通常情况下，我们会根据业务使用 OOP（面向对象）思想，将应用划分为多个不同的业务模块，每个模块的核心功能都只为特定的业务领域提供服务，例如电商系统中的订单模块、商品模块、库存模块就分别是为维护电商系统的订单信息、商品信息以及库存信息而服务的。
+
+但除此之外，应用中往往还存在一些非业务的通用功能，例如日志管理、权限管理、事务管理、异常管理等。这些通用功能虽然与应用的业务无关，但几乎所有的业务模块都会使用到它们，因此这些通用功能代码就只能横向散布式地嵌入到多个不同的业务模块之中。这无疑会产生大量重复性代码，不利于各个模块的复用。
+
+您可能会想，可以将这些重复性代码封装成为公共函数，然后在业务模块中显式的调用，不也能减少重复性代码吗？是的，这样做的确能一定程度上减少重复性代码，但这样也增加了业务代码与公共函数的耦合性，任何对于公共函数的修改都会对所有与之相关的业务代码造成影响。
+
+---
+
+
+
 ## 1. 基于注解的AspectJ AOP开发
 
 * <font color=blue>**5种通知类型**</font>
@@ -124,6 +134,87 @@ Java的反射机制指的是程序在运行时能够获取自身的信息。
 ## 2. 基于XML的AspectJ AOP开发
 
 不使用注解的情况下，在xml文件中配置五种通知即可。
+
+
+
+
+
+## 3. 单元测试
+
+整合 Junit5	Junit4
+
+
+
+---
+
+# 事务
+
+## 1. JdbcTemplate
+
+JdbcTemplate 是 Spring JDBC 核心包（core）中的核心类，它可以通过配置文件、注解、Java 配置类等形式获取数据库的相关信息，实现了对 JDBC 开发过程中的驱动加载、连接的开启和关闭、SQL 语句的创建与执行、异常处理、事务处理、数据类型转换等操作的封装。我们只要对其传入SQL 语句和必要的参数即可轻松进行 JDBC 编程。
+
+
+
+| 方法                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| public int update(String sql)                                | 用于执行新增、更新、删除等语句；sql：需要执行的 SQL 语句；args 表示需要传入到 SQL 语句中的参数。 |
+| public int update(String sql,Object... args)                 | 同上                                                         |
+| public void execute(String sql)                              | 可以执行任意 SQL，一般用于执行 DDL 语句； sql：需要执行的 SQL 语句；action 表示执行完 SQL 语句后，要调用的函数。 |
+| public T execute(String sql, PreparedStatementCallback action) | 同上                                                         |
+| public <T> List<T> query(String sql, RowMapper<T> rowMapper, @Nullable Object... args) | 用于执行查询语句；sql：需要执行的 SQL 语句；rowMapper：用于确定返回的集合（List）的类型；args：表示需要传入到 SQL 语句的参数。 |
+| public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args) | 同上                                                         |
+| public int[] batchUpdate(String sql, List<Object[]> batchArgs, final int[] argTypes) | 用于批量执行新增、更新、删除等语句； sql：需要执行的 SQL 语句；argTypes：需要注入的 SQL 参数的 JDBC 类型；batchArgs：表示需要传入到 SQL 语句的参数。 |
+
+
+
+* <font color=blue>**实现CURD**</font>
+  * 1. 装配JdbcTemplate
+    2. 测试增删改功能
+    3. 查询数据返回对象
+    4. 查询数据返回list集合
+    5. 查询返回单个的值
+
+
+
+## 2. 事务基本概念
+
+<font color=red>事务允许我们将几个或一组操作组合成一个要么全部成功、要么全部失败的工作单元。</font>如果事务中的所有的操作都执行成功，那自然万事大吉。但如果事务中的任何一个操作失败，那么事务中所有的操作都会被<font color=red>回滚</font>，已经执行成功操作也会被完全清除干净，就好像什么事都没有发生一样。
+
+
+
+## 3.基于注解的声明式事务 @Transactional
+
+@Transactional标识在方法上，则只会影响该方法
+
+@Transactional标识的类上，则会影响类中所有的方法
+
+
+
+事务属性：
+
+* 只读
+* 超时
+* 回滚策略
+* 隔离级别
+* 传播行为
+
+
+
+全注解配置事务
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

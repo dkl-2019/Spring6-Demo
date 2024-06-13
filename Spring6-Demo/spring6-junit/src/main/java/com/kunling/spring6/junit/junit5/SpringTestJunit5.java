@@ -7,11 +7,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-@ExtendWith(SpringExtension.class
-
-)
-@ContextConfiguration()
-//@SpringJUnitConfig(locations = "classpath:bean.xml")
+//@ExtendWith(SpringExtension.class)
+//@ContextConfiguration("classpath:bean.xml")
+@SpringJUnitConfig(locations = "classpath:bean.xml")
 public class SpringTestJunit5 {
 
     @Autowired  // 注入
