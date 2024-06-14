@@ -35,7 +35,7 @@ public class BookServiceImpl implements BookService{
         // 更新用户表里面的用户余额 -图书价格
         bookDao.updateUserBalance(userId, price);
 
-        System.out.println(1/0);
+//        System.out.println(1/0);
     }
 
 }

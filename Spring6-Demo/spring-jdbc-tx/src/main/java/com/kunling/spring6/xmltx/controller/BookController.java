@@ -1,7 +1,6 @@
-package com.kunling.spring6.tx.controller;
+package com.kunling.spring6.xmltx.controller;
 
-import com.kunling.spring6.tx.service.BookService;
-import com.kunling.spring6.tx.service.CheckoutService;
+import com.kunling.spring6.xmltx.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -19,13 +18,5 @@ public class BookController {
 
     }
 
-    @Autowired
-    private CheckoutService checkoutService;
-
-    public void checkout(Integer[] bookIds, Integer userId) {
-        // 调用service方法
-        checkoutService.checkout(bookIds, userId);
-
-    }
 
 }

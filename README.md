@@ -182,11 +182,23 @@ JdbcTemplate 是 Spring JDBC 核心包（core）中的核心类，它可以通�
 
 
 
-## 3.基于注解的声明式事务 @Transactional
+## 3.基于注解的声明式事务
 
-@Transactional标识在方法上，则只会影响该方法
 
-@Transactional标识的类上，则会影响类中所有的方法
+
+使用步骤：
+
+* 1、开启注解事务
+
+  * tx 命名空间提供了一个 <tx:annotation-driven> 元素，用来开启注解事务，简化 Spring 声明式事务的 XML 配置
+
+* 2、使用@Transactional注解
+
+  * <font color=blue>@Transactional</font>标识在方法上，则只会影响该方法
+
+    <font color=blue>@Transactional</font>标识的类上，则会影响类中所有的方法
+
+
 
 
 
@@ -200,15 +212,30 @@ JdbcTemplate 是 Spring JDBC 核心包（core）中的核心类，它可以通�
 
 
 
-全注解配置事务
+全注解配置事务：
+
+* 增加config配置类开启事务管理
 
 
 
+---
 
+## 4.基于xml的声明式事务
 
+Spring声明事务管理是通过AOP实现的，其本质是对方法前后进行拦截，然后在目标方法开始之前创建或者加入一个事务，在执行完目标方法后，根据执行情况提交或回滚事务。
 
+通过XML方式实现声明式事务管理，步骤如下：
 
-
+* 1.引入命名空间
+  * 由于Spring提供的声明式事务管理是依赖于Spring AOP实现的，因此我们在XML配置中还应该添加与aop命名空间相关的配置
+* 2.配置事务管理器
+  * 借助数据源配置DataSourceTransactionManager，定义相关的事务管理器实现的Bean 
+* 3.配置事务通知
+  * 指定事务作用的方法以及所需的事务属性
+  * 事务管理器配置：使用 <tx:advice> 来声明事务时，需要通过 transaction-manager 参数来定义一个事务管理器，这个参数的取值默认为 transactionManager
+  * 事务属性配置：对于<tx:advice> 来说，事务属性是被定义在<tx:attributes> 中的，该元素可以包含一个或多个 <tx:method> 元素
+* 配置切面点
+  * 元素只是定义了一个AOP通知，它并不是一个完整的事务性切面。我们在 <tx:advice> 元素中并没有定义哪些 Bean 应该被通知，因此我们需要一个切点来做这件事
 
 
 
